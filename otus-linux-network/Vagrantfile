@@ -3,7 +3,7 @@
 
 MACHINES = {
   :inetRouter => {
-    :box_name => "centos/6",
+    :box_name => "centos/7",
     #:public => {:ip => '10.10.10.1', :adapter => 1},
     :net => [
       {ip: '192.168.255.1', adapter: 2, :device => "eth1",   netmask: "255.255.255.252", virtualbox__intnet: "router-net"},
@@ -30,7 +30,7 @@ MACHINES = {
       {adapter: 5, auto_config: false, virtualbox__intnet: true},
     ]
   },
-  :office1Router => {
+  :office2Router => {
     :box_name => "centos/7",
     :net => [
       {ip: '192.168.255.10',  adapter: 2, :device => "eth1",   netmask: "255.255.255.252", virtualbox__intnet: "interrouter1-net"},
@@ -39,7 +39,7 @@ MACHINES = {
       {ip: '192.168.2.129',   adapter: 5, :device => "eth4",   netmask: "255.255.255.192", virtualbox__intnet: "office1mngr-net"},
     ]
   },
-  :office1Server => {
+  :office2Server => {
     :box_name => "centos/7",
     :net => [
       {ip: '192.168.2.66',   adapter: 2, :device => "eth1",   netmask: "255.255.255.192", virtualbox__intnet: "office1testservers-net"},
@@ -48,7 +48,7 @@ MACHINES = {
       {adapter: 5, auto_config: false, virtualbox__intnet: true},
     ]
   },
-  :office2Router => {
+  :office1Router => {
     :box_name => "centos/7",
     :net => [
       {ip: '192.168.255.6',   adapter: 2, :device => "eth1",   netmask: "255.255.255.252", virtualbox__intnet: "interrouter2-net"},
@@ -57,7 +57,7 @@ MACHINES = {
       {ip: '192.168.1.193',   adapter: 5, :device => "eth4",   netmask: "255.255.255.192", virtualbox__intnet: "office2hw-net"},
     ]
   },
-  :office2Server => {
+  :office1Server => {
     :box_name => "centos/7",
     :net => [
       {ip: '192.168.1.130',   adapter: 2, :device => "eth1",   netmask: "255.255.255.192", virtualbox__intnet: "office2testservers-net"},
