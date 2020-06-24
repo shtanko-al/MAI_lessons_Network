@@ -16,9 +16,9 @@ MACHINES = {
     :box_name => "centos/7",
     :net => [
       {ip: '192.168.255.2', adapter: 2, :device => "eth1",   netmask: "255.255.255.252", virtualbox__intnet: "router-net"},
-      {ip: '192.168.0.1',   adapter: 3, :device => "eth2",   netmask: "255.255.255.240", virtualbox__intnet: "dir-net"},
-      {ip: '192.168.255.9', adapter: 4, :device => "eth3",   netmask: "255.255.255.252", virtualbox__intnet: "interrouter1-net"},
-      {ip: '192.168.255.5', adapter: 5, :device => "eth4",   netmask: "255.255.255.252", virtualbox__intnet: "interrouter2-net"},
+      {ip: '192.168.0.1',   adapter: 3, :device => "eth2",   netmask: "255.255.255.0",   virtualbox__intnet: "dir-net"},
+      {ip: '192.168.255.5', adapter: 4, :device => "eth3",   netmask: "255.255.255.252", virtualbox__intnet: "interrouter1-net"},
+      {ip: '192.168.255.9', adapter: 5, :device => "eth4",   netmask: "255.255.255.252", virtualbox__intnet: "interrouter2-net"},
     ]
   },
   :centralServer => {
@@ -30,37 +30,40 @@ MACHINES = {
       {adapter: 5, auto_config: false, virtualbox__intnet: true},
     ]
   },
-  :office2Router => {
+    :office1Router => {
     :box_name => "centos/7",
     :net => [
-      {ip: '192.168.255.10',  adapter: 2, :device => "eth1",   netmask: "255.255.255.252", virtualbox__intnet: "interrouter1-net"},
-      {ip: '192.168.2.1',     adapter: 3, :device => "eth2",   netmask: "255.255.255.192", virtualbox__intnet: "office1dev-net"},
-      {ip: '192.168.2.65',    adapter: 4, :device => "eth3",   netmask: "255.255.255.192", virtualbox__intnet: "office1testservers-net"},
-      {ip: '192.168.2.129',   adapter: 5, :device => "eth4",   netmask: "255.255.255.192", virtualbox__intnet: "office1mngr-net"},
-    ]
-  },
-  :office2Server => {
-    :box_name => "centos/7",
-    :net => [
-      {ip: '192.168.2.66',   adapter: 2, :device => "eth1",   netmask: "255.255.255.192", virtualbox__intnet: "office1testservers-net"},
-      {adapter: 3, auto_config: false, virtualbox__intnet: true},
-      {adapter: 4, auto_config: false, virtualbox__intnet: true},
-      {adapter: 5, auto_config: false, virtualbox__intnet: true},
-    ]
-  },
-  :office1Router => {
-    :box_name => "centos/7",
-    :net => [
-      {ip: '192.168.255.6',   adapter: 2, :device => "eth1",   netmask: "255.255.255.252", virtualbox__intnet: "interrouter2-net"},
-      {ip: '192.168.1.1',     adapter: 3, :device => "eth2",   netmask: "255.255.255.128", virtualbox__intnet: "office2dev-net"},
-      {ip: '192.168.1.129',   adapter: 4, :device => "eth3",   netmask: "255.255.255.192", virtualbox__intnet: "office2testservers-net"},
-      {ip: '192.168.1.193',   adapter: 5, :device => "eth4",   netmask: "255.255.255.192", virtualbox__intnet: "office2hw-net"},
+      {ip: '192.168.255.6', adapter: 2, :device => "eth1",   netmask: "255.255.255.252", virtualbox__intnet: "interrouter1-net"},
+      {ip: '192.168.1.1',   adapter: 3, :device => "eth2",   netmask: "255.255.255.128", virtualbox__intnet: "office1_dev-net"},
+      {ip: '192.168.1.129', adapter: 4, :device => "eth3",   netmask: "255.255.255.192", virtualbox__intnet: "office1_testservers-net"},
+      {ip: '192.168.1.193', adapter: 5, :device => "eth4",   netmask: "255.255.255.192", virtualbox__intnet: "office1_hw-net"},
     ]
   },
   :office1Server => {
     :box_name => "centos/7",
     :net => [
-      {ip: '192.168.1.130',   adapter: 2, :device => "eth1",   netmask: "255.255.255.192", virtualbox__intnet: "office2testservers-net"},
+      {ip: '192.168.1.130',  adapter: 2, :device => "eth1",   netmask: "255.255.255.192", virtualbox__intnet: "office1_testservers-net"},
+      {adapter: 3, auto_config: false, virtualbox__intnet: true},
+      {adapter: 4, auto_config: false, virtualbox__intnet: true},
+      {adapter: 5, auto_config: false, virtualbox__intnet: true},
+    ]
+  },
+
+  :office2Router => {
+    :box_name => "centos/7",
+    :net => [
+      {ip: '192.168.255.10', adapter: 2, :device => "eth1",   netmask: "255.255.255.252", virtualbox__intnet: "interrouter2-net"},
+      {ip: '192.168.2.1',    adapter: 3, :device => "eth2",   netmask: "255.255.255.192", virtualbox__intnet: "office2_dev-net"},
+      {ip: '192.168.2.65',   adapter: 4, :device => "eth3",   netmask: "255.255.255.192", virtualbox__intnet: "office2_testservers-net"},
+      {ip: '192.168.2.129',  adapter: 5, :device => "eth4",   netmask: "255.255.255.192", virtualbox__intnet: "office2_mngr-net"},
+      {ip: '192.168.2.193',  adapter: 6, :device => "eth5",   netmask: "255.255.255.192", virtualbox__intnet: "office2_hw-net"},
+
+    ]
+  },
+  :office2Server => {
+    :box_name => "centos/7",
+    :net => [
+      {ip: '192.168.2.66',   adapter: 2, :device => "eth1",   netmask: "255.255.255.192", virtualbox__intnet: "office2_testservers-net"},
       {adapter: 3, auto_config: false, virtualbox__intnet: true},
       {adapter: 4, auto_config: false, virtualbox__intnet: true},
       {adapter: 5, auto_config: false, virtualbox__intnet: true},
@@ -95,71 +98,93 @@ Vagrant.configure("2") do |config|
           cp ~vagrant/.ssh/auth* ~root/.ssh
           SHELL
         
-        case boxname.to_s
-        when "inetRouter"
-          box.vm.provision "shell", run: "always", inline: <<-SHELL
-            sysctl net.ipv4.conf.all.forwarding=1
-            iptables -t nat -A POSTROUTING ! -d 192.168.0.0/22 -o eth0 -j MASQUERADE
-            ip route add 192.168.0.0/24 via 192.168.255.2 dev eth1
-            ip route add 192.168.1.0/24 via 192.168.255.2 dev eth1
-            ip route add 192.168.2.0/24 via 192.168.255.2 dev eth1
-            ip route add 192.168.255.4/30 via 192.168.255.2 dev eth1
-            ip route add 192.168.255.8/30 via 192.168.255.2 dev eth1
-            SHELL
+  case boxname.to_s
+   when "inetRouter"
+	  box.vm.provision "shell", run: "always", inline: <<-SHELL
+		yum install nano -y		
+		sysctl net.ipv4.conf.all.forwarding=1
+		iptables -t nat -A POSTROUTING ! -d 192.168.0.0/22 -o eth0 -j MASQUERADE
+		ip route add 192.168.0.0/24 via 192.168.255.2 dev eth1
+		ip route add 192.168.1.0/24 via 192.168.255.2 dev eth1
+		ip route add 192.168.2.0/24 via 192.168.255.2 dev eth1
+		ip route add 192.168.255.4/30 via 192.168.255.2 dev eth1
+		ip route add 192.168.255.8/30 via 192.168.255.2 dev eth1
+		echo "nameserver 8.8.8.8" > /etc/resolv.conf
+  SHELL
 
-        when "centralRouter"
-          box.vm.provision "shell", run: "always", inline: <<-SHELL
-            sysctl net.ipv4.conf.all.forwarding=1
-            ip route delete default 2>&1 >/dev/null || true
-            ip address add 192.168.0.33/28 dev eth3:1
-            ip link set eth3:1 up
-            ip address add 192.168.0.65/26 dev eth4:1
-            ip link set eth4:1 up
-            ip route add 192.168.1.0/24 via 192.168.255.6 dev eth4
-            ip route add 192.168.2.0/24 via 192.168.255.10 dev eth3
-            ip route add 0.0.0.0/0 via 192.168.255.1 dev eth1
-            SHELL
+  when "centralRouter"
+	  box.vm.provision "shell", run: "always", inline: <<-SHELL
+		yum install nano -y
+		sysctl net.ipv4.conf.all.forwarding=1
+		ip route delete default 2>&1 >/dev/null || true
+		#ip address add 192.168.0.33/28 dev eth3:1
+		#ip link set eth3:1 up
+		#ip address add 192.168.0.65/26 dev eth4:1
+		#ip link set eth4:1 up
+		ip route add 192.168.1.0/24 via 192.168.255.6 dev eth3
+		ip route add 192.168.2.0/24 via 192.168.255.10 dev eth4
+		ip route add default via 192.168.255.1 dev eth1
+		echo "nameserver 8.8.8.8" > /etc/resolv.conf
+    #ip link set eth0 down
+  SHELL
 
-        when "office1Router"
-          box.vm.provision "shell", run: "always", inline: <<-SHELL
-            sysctl net.ipv4.conf.all.forwarding=1
-            ip route delete default 2>&1 >/dev/null || true
-            ip address add 192.168.2.193/26 dev eth4:1
-            ip link set eth4:1 up
-            ip route add 192.168.0.0/24 via 192.168.255.9 dev eth1
-            ip route add 192.168.1.0/24 via 192.168.255.9 dev eth1
-            ip route add 192.168.255.4/30 via 192.168.255.9 dev eth1
-            ip route add 0.0.0.0/0 via 192.168.255.9 dev eth1
-            SHELL
+  when "centralServer"
+	  box.vm.provision "shell", run: "always", inline: <<-SHELL
+		yum install nano -y
+		ip route delete default 2>&1 >/dev/null || true
+		ip route add default via 192.168.0.1 dev eth1
+		echo "nameserver 8.8.8.8" > /etc/resolv.conf
+  	#ip link set eth0 down  
+  SHELL
 
-        when "office2Router"
-          box.vm.provision "shell", run: "always", inline: <<-SHELL
-            sysctl net.ipv4.conf.all.forwarding=1
-            ip route delete default 2>&1 >/dev/null || true
-            ip route add 192.168.0.0/24 via 192.168.255.5 dev eth1
-            ip route add 192.168.2.0/24 via 192.168.255.5 dev eth1
-            ip route add 192.168.255.8/30 via 192.168.255.5 dev eth1
-            ip route add 0.0.0.0/0 via 192.168.255.5 dev eth1
-            SHELL
 
-        when "centralServer"
-          box.vm.provision "shell", run: "always", inline: <<-SHELL
-            ip route delete default 2>&1 >/dev/null || true
-            ip route add 0.0.0.0/0 via 192.168.0.1 dev eth1
-            SHELL
+  when "office1Router"
+	  box.vm.provision "shell", run: "always", inline: <<-SHELL
+		yum install nano -y
+		sysctl net.ipv4.conf.all.forwarding=1
+		ip route delete default 2>&1 >/dev/null || true
+		ip route add 192.168.0.0/24 via 192.168.255.5 dev eth1
+		ip route add 192.168.2.0/24 via 192.168.255.5 dev eth1
+		ip route add 192.168.255.8/30 via 192.168.255.5 dev eth1
+		ip route add default via 192.168.255.5 dev eth1
+		echo "nameserver 8.8.8.8" > /etc/resolv.conf
+ 		#ip link set eth0 down            
+  SHELL
 
-        when "office1Server"
-          box.vm.provision "shell", run: "always", inline: <<-SHELL
-            ip route delete default 2>&1 >/dev/null || true
-            ip route add 0.0.0.0/0 via 192.168.2.65 dev eth1
-            SHELL
+	when "office1Server"
+	  box.vm.provision "shell", run: "always", inline: <<-SHELL
+		yum install nano -y		
+		ip route delete default 2>&1 >/dev/null || true
+		ip route add default via 192.168.1.129 dev eth1
+		echo "nameserver 8.8.8.8" > /etc/resolv.conf
+		#ip link set eth0 down
+   SHELL
 
-        when "office2Server"
-          box.vm.provision "shell", run: "always", inline: <<-SHELL
-            ip route delete default 2>&1 >/dev/null || true
-            ip route add 0.0.0.0/0 via 192.168.1.129 dev eth1
-            SHELL
-        end
+  when "office2Router"
+	  box.vm.provision "shell", run: "always", inline: <<-SHELL
+		yum install nano -y
+		sysctl net.ipv4.conf.all.forwarding=1
+		ip route delete default 2>&1 >/dev/null || true
+		#ip address add 192.168.2.193/26 dev eth4:1
+		#ip link set eth4:1 up
+		ip route add 192.168.0.0/24 via 192.168.255.9 dev eth1
+		ip route add 192.168.1.0/24 via 192.168.255.9 dev eth1
+		ip route add 192.168.255.4/30 via 192.168.255.9 dev eth1
+		ip route add default via 192.168.255.9 dev eth1
+		echo "nameserver 8.8.8.8" > /etc/resolv.conf
+    #ip link set eth0 down		
+  SHELL
+
+	when "office2Server"
+	  box.vm.provision "shell", run: "always", inline: <<-SHELL
+		yum install nano -y	
+		ip route delete default 2>&1 >/dev/null || true
+		ip route add default via 192.168.2.65 dev eth1
+		echo "nameserver 8.8.8.8" > /etc/resolv.conf
+    #ip link set eth0 down
+  SHELL
+
+       end
     end
   end
 end
