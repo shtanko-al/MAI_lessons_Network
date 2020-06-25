@@ -176,6 +176,12 @@ ip route add default via xxx.xxx.xxx.xxx dev eth1
 
 Прописал дефолтный маршрут в Vagrant файл
 
+Проверка маршрутов (в интернет дожен ходить через inetRouter, а не через NAT)
+
+![office1Server](office1Server_trace.png)
+
+![office2Server](office2Server_trace.png)
+
 ---
 ### настройка DNS:
 Пропишем DNS. они находятся в файле ```resolv.conf```
