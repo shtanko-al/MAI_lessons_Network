@@ -206,7 +206,7 @@ service network restart
 
 В итоге после второй перезагрузки настройки DNS теряются, сделал настройку DNS в Vagrant файле
 
-# задание 4
+# задание 4 (с GitLab'а)
 - поднять nginx на officе2Server
 
 Надо создать файл ```/etc/yum.repos.d/nginx.repo``` и прописать в него:
@@ -217,6 +217,19 @@ baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
 gpgcheck=0
 enabled=1
 ```
+Установка Nginx: ```yum install nginx```
+
+По умолчанию, в CentOS работает брандмауэр, поэтому необходимо добавить рабочие порты 80 (http) и 443 (https) в правила на исключение:
+
+```
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --permanent --add-port=443/tcp
+```
+Перезапуск firewalld: ```firewall-cmd --reload```
+
+Добавление NGINX в автозапуск при загрузке CentOS: ```systemctl enable nginx```
+
+Запуск веб-сервера: ```systemctl start nginx```
 
 ---
 В процессе
