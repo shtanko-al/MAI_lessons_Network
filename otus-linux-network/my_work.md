@@ -7,7 +7,7 @@
 * проверить нет ли ошибок при разбиении
 
 ## Схема сети
-![схема сети в drawio](/pictures/shema.png)
+![схема сети в drawio](pictures/shema.png)
 
 Про ошибки разбиения: как минимум, для избежания путаницы, переименовать сети так, чтобы office1 была 192.168.1.x, а office2 192.168.2.x
 
@@ -178,9 +178,9 @@ ip route add default via xxx.xxx.xxx.xxx dev eth1
 
 Проверка маршрутов (в интернет дожен ходить через inetRouter, а не через NAT)
 
-![office1Server](/pictures/office1Server_trace.png)
+![office1Server](pictures/office1Server_trace.png)
 
-![office2Server](/pictures/office2Server_trace.png)
+![office2Server](pictures/office2Server_trace.png)
 
 ---
 ### настройка DNS:
