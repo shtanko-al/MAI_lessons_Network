@@ -7,7 +7,7 @@
 * проверить нет ли ошибок при разбиении
 
 ## Схема сети
-[схема сети в drawio](https://app.diagrams.net/#G1gYoQV-3EuAFWX8u0kSCpouW5Ecjqh2U1)
+[схема сети в drawio](https://drive.google.com/file/d/1gYoQV-3EuAFWX8u0kSCpouW5Ecjqh2U1/view?usp=sharing)
 
 Про ошибки разбиения: как минимум, для избежания путаницы, переименовать сети так, чтобы office1 была 192.168.1.x, а office2 192.168.2.x
 
