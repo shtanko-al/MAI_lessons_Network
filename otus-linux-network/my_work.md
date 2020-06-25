@@ -199,3 +199,22 @@ service network restart
 Это надо сделать везде, кроме inetRouter. Теоритически, можно не прописывать на машинах-маршрутизаторах, но тогда даже обновить их не получиться.
 
 В итоге после второй перезагрузки настройки DNS теряются, сделал настройку DNS в Vagrant файле
+
+# задание 4
+- поднять nginx на officе2Server
+
+Надо создать файл ```/etc/yum.repos.d/nginx.repo``` и прописать в него:
+```
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+gpgcheck=0
+enabled=1
+```
+
+---
+В процессе
+- Пробросить порт с локалхоста на inetRouter
+- настроить проброс порта до office2Server
+- запретить office1Server ходить на office2Server на 80й порт, все остальные должны работать
+- запретить office1Server отвечать на пинг, всем кроме inetRouter, но office1Server должен пинговать всех остальных
